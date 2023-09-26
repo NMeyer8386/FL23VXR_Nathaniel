@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 5720108928777772637}
   - component: {fileID: 2624233576213998932}
   m_Layer: 0
-  m_Name: Chair Leg_BackL
+  m_Name: CouchLeg_BackL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 8405584090820464085}
   - component: {fileID: 4908397084737254737}
   m_Layer: 0
-  m_Name: Chair Leg_FrontR
+  m_Name: CouchLeg_FrontR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 1022441859454236031}
   - component: {fileID: 1328567646583442232}
   m_Layer: 0
-  m_Name: ChairBack
+  m_Name: CouchBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 6113961586025072881}
   - component: {fileID: 8609443652933577185}
   m_Layer: 0
-  m_Name: ChairBottom
+  m_Name: CouchBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 6703149758718424553}
   - component: {fileID: 2657587925021466578}
   m_Layer: 0
-  m_Name: Chair Leg_BackR
+  m_Name: CouchLeg_BackR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -825,7 +825,7 @@ GameObject:
   - component: {fileID: 314779210998385961}
   - component: {fileID: 3483840013031072330}
   m_Layer: 0
-  m_Name: Chair Leg_FrontL
+  m_Name: CouchLeg_FrontL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
