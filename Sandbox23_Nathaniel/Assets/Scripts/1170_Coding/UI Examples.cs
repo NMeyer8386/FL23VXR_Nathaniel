@@ -10,7 +10,6 @@ public class ChangeProperty : MonoBehaviour
     public Slider volSlide;
 
     private Material objColour;
-    private Material objScale;
     private AudioSource objVolume;
     protected Vector3 tall = new Vector3(1, 2, 1);
     protected Vector3 wide = new Vector3(2, 1, 1);
