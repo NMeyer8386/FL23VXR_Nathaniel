@@ -27,9 +27,9 @@ public class Demo_Script : MonoBehaviour
         Quaternion demoQuaternion = new Quaternion(sliderX.value, sliderY.value, sliderZ.value, 1);
 
         //Change the labels to the slider value (rounded to 2 decimal points)
-        labelX.text = Math.Round(sliderX.value, 2).ToString();
-        labelY.text = Math.Round(sliderY.value, 2).ToString();
-        labelZ.text = Math.Round(sliderZ.value, 2).ToString();
+        labelX.text = "X: " + Math.Round(sliderX.value, 2).ToString();
+        labelY.text = "Y: " + Math.Round(sliderY.value, 2).ToString();
+        labelZ.text = "Z: " + Math.Round(sliderZ.value, 2).ToString();
 
         //Change the rotation to the Quaternion value
         thing.transform.rotation = demoQuaternion;
