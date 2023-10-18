@@ -20,6 +20,7 @@ public class AudioPlaybackManager : MonoBehaviour
 
     public void PlayAudio()
     {
+        Debug.Log("played");
         audioPlayer.Play();
     }
 }
