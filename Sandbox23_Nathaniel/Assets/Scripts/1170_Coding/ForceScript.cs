@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class ForceScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject theCube;
+    public Rigidbody theBody;
+
+    private void Start()
     {
-        
+        theCube = GetComponent<GameObject>();
+        theBody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        TouchCube();
+    }
+
+    public void TouchCube()
+    {
+        theBody.AddForce(new Vector3(transform.position.x, transform.position.y + 100f, transform.position.z));
+        Debug.Log("touched");
     }
 }
