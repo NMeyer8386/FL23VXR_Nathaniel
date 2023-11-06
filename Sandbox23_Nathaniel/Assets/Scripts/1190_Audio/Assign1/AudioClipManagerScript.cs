@@ -6,8 +6,4 @@ public class AudioClipManagerScript : MonoBehaviour
 {
     public AudioClip[] audioClips;
 
-    void Test()
-    {
-        
-    }
 }
