@@ -5,5 +5,4 @@ using UnityEngine;
 public class AudioClipManagerScript : MonoBehaviour
 {
     public AudioClip[] audioClips;
-
 }
