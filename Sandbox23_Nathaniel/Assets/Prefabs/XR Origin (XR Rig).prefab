@@ -1648,7 +1648,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 66.16082
+  field of view: 78.63661
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1692,10 +1692,10 @@ MonoBehaviour:
   m_PositionInput:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Position Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: 910467f6-82f0-4cbd-bc14-1d27cd470df6
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1704,10 +1704,10 @@ MonoBehaviour:
   m_RotationInput:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Rotation Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: b0b47c22-8699-44f0-9731-f25f29cd90c5
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -2445,6 +2445,7 @@ GameObject:
   - component: {fileID: 730378355198785551}
   - component: {fileID: 8171236061688344171}
   - component: {fileID: 3236997896220910717}
+  - component: {fileID: 7251152266691825392}
   m_Layer: 0
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -2500,6 +2501,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ActionAssets:
   - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!143 &7251152266691825392
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842188282750815219}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.76
+  m_Radius: 0.26
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.51, z: 0}
 --- !u!1 &7099104281315130420
 GameObject:
   m_ObjectHideFlags: 0
