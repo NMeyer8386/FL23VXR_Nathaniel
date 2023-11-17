@@ -1690,66 +1690,90 @@ MonoBehaviour:
   m_UpdateType: 0
   m_IgnoreTrackingState: 0
   m_PositionInput:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
-      m_Name: Position Input
+      m_Name: Position
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 910467f6-82f0-4cbd-bc14-1d27cd470df6
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  m_RotationInput:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Rotation Input
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: b0b47c22-8699-44f0-9731-f25f29cd90c5
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  m_TrackingStateInput:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Tracking State
-      m_Type: 0
-      m_ExpectedControlType: Integer
-      m_Id: 00f4e8c2-b175-4f06-8bda-2f7581eca6e2
+      m_Id: 0bacfa51-7938-4a88-adae-9e8ba6c59d23
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: b095302b-98c3-4766-9d39-7fd357d1087b
-        m_Path: <XRHMD>/trackingState
+        m_Id: f5efb008-b167-4d0f-b9e0-49a2350a85b3
+        m_Path: <XRHMD>/centerEyePosition
         m_Interactions: 
         m_Processors: 
         m_Groups: 
-        m_Action: Tracking State
+        m_Action: Position
         m_Flags: 0
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: 7862207684358717888, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_RotationInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Rotation
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 5439f14e-c9da-4bd1-ad3f-7121a75c10d9
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: f984a7fd-f7e2-45ef-b21d-699a5d160f29
+        m_Path: <XRHMD>/centerEyeRotation
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Rotation
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: -530380113134220495, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_TrackingStateInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Tracking State Input
+      m_Type: 0
+      m_ExpectedControlType: Integer
+      m_Id: be9cc21d-5595-4ea6-aa72-e48652a11968
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 1031966339891076899, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_PositionAction:
-    m_Name: 
+    m_Name: Position
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 0bacfa51-7938-4a88-adae-9e8ba6c59d23
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: f5efb008-b167-4d0f-b9e0-49a2350a85b3
+      m_Path: <XRHMD>/centerEyePosition
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Position
+      m_Flags: 0
     m_Flags: 0
   m_RotationAction:
-    m_Name: 
+    m_Name: Rotation
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 5439f14e-c9da-4bd1-ad3f-7121a75c10d9
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: f984a7fd-f7e2-45ef-b21d-699a5d160f29
+      m_Path: <XRHMD>/centerEyeRotation
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 0
     m_Flags: 0
   m_HasMigratedActions: 1
 --- !u!114 &3148311596422579818
