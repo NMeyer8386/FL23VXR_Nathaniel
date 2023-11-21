@@ -1,0 +1,420 @@
+{
+    "name": "Quest Input",
+    "maps": [
+        {
+            "name": "LeftStick",
+            "id": "ce86f60e-900c-49d1-a996-241aa87b2e77",
+            "actions": [
+                {
+                    "name": "Stick X/Y",
+                    "type": "Button",
+                    "id": "20756696-3fb3-4f1e-bfc0-201da5b65b7c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Stick Press",
+                    "type": "Button",
+                    "id": "748ad6ff-2e8e-4e1b-bf35-3acb2d5900f3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "bcc760ae-749c-4b96-97ea-3d96e26fa905",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stick X/Y",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "abd49573-f90d-40e6-96be-ef0cdf9214f0",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerRight>{LeftHand}/thumbstick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Stick X/Y",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "eb24ed75-e81b-4c85-9723-a6aff4f02ae9",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerLeft>{LeftHand}/thumbstick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Stick X/Y",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f7f87d6a-f69e-4fa8-acdb-8d3685f5ec3a",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerRight>{LeftHand}/thumbstick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Stick Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "RightStick",
+            "id": "a931417b-3c1c-418e-9edb-a7c5b850ff9d",
+            "actions": [
+                {
+                    "name": "Stick X/Y",
+                    "type": "Button",
+                    "id": "b88eb824-c030-4979-9a39-51d7c1471ea7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Stick X",
+                    "type": "Value",
+                    "id": "f7d1524e-ad1c-4754-adfd-bfb9b6e80db3",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Stick Y",
+                    "type": "Value",
+                    "id": "9131adf8-265e-43ae-9ed2-aa3870c8d5f2",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Stick Press",
+                    "type": "Button",
+                    "id": "fe0a0bec-39bc-4fbe-b158-9cc6d5fd414e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "7dd80f55-b2af-49bd-851a-bea36812e95b",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stick X/Y",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "27d8c669-8fd1-457d-b431-c88009db2ad3",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerLeft>{RightHand}/thumbstick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Stick X/Y",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "ba9a550c-5e1d-423b-89ea-03e7b31f686b",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerRight>{RightHand}/thumbstick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Stick X/Y",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3e90673d-bd94-4867-96e0-bd07910d33a1",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerRight>{RightHand}/thumbstick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Stick X",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27013b8e-e567-4bd2-9c9b-fb6ed2603a96",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerLeft>{RightHand}/thumbstick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Stick Y",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "702f74ea-3706-413a-9b5e-b9c14879cecd",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerRight>{RightHand}/thumbstick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Stick Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Left Buttons",
+            "id": "b65aff76-ac82-43ba-89d2-c8c4ba2d3e70",
+            "actions": [
+                {
+                    "name": "Left X Button",
+                    "type": "Button",
+                    "id": "f61bf58f-8fe4-46d7-8d1a-0b5fb1121514",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left Y Button",
+                    "type": "Button",
+                    "id": "b16d177a-9665-4daf-8db6-079460b14a71",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left Menu Button",
+                    "type": "Button",
+                    "id": "0c30c12d-919f-4dc6-94f6-da527c59cd22",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1cac1661-5d74-4c65-bffa-9fc009cf9a19",
+                    "path": "<OculusTouchController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Left X Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "46b81cf9-a412-4af1-9f36-2b1062ebbb18",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerRight>{LeftHand}/secondarybutton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Left Y Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b0b9050-7512-4863-8dbf-f744ad612bf2",
+                    "path": "<OculusTouchController>{LeftHand}/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Left Menu Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Right Buttons",
+            "id": "42eff02b-6556-44cd-a4ef-2accebbfda18",
+            "actions": [
+                {
+                    "name": "Right A Button",
+                    "type": "Button",
+                    "id": "19626aff-0044-481f-ae7d-dd50bd38d48b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right B Button",
+                    "type": "Button",
+                    "id": "1b79cff3-4abd-4f60-b2dc-da0e905f0df6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a7d9cbf7-9516-4855-975b-49b1c30d4230",
+                    "path": "<OculusTouchController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Right A Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c21885c-6dd8-4540-8b54-7751ebd96d27",
+                    "path": "<OculusTouchController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Right B Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Left Grip/Trigger",
+            "id": "abbce559-132d-4d65-b824-d303842acb64",
+            "actions": [
+                {
+                    "name": "Left Grip",
+                    "type": "Button",
+                    "id": "146f8b3e-851c-4e65-a38e-117be997317e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left Trigger",
+                    "type": "Button",
+                    "id": "bae0f6b1-779a-421a-8619-1212af4eeeb3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f1e4a1bf-b6e6-4a26-a6cb-c7c642abf2b5",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Left Grip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "473d1388-31ea-4153-af7b-424ac7839989",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerRight>{LeftHand}/triggerpressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Left Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Right Grip/Trigger",
+            "id": "46a81c1a-3447-4014-b356-cbdd582a7576",
+            "actions": [
+                {
+                    "name": "Right Grip",
+                    "type": "Button",
+                    "id": "c7da18bc-1c4a-44a8-87bb-057c5f00f2cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right Trigger",
+                    "type": "Button",
+                    "id": "dbb1b78e-ef94-4fde-9fa4-890aa56edf48",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "74f20a2d-0700-4671-b2b5-93de1d74dfda",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerRight>{RightHand}/grippressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Right Grip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c14b9731-05c5-473f-9e7b-d2eb9d2e567b",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Right Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Default",
+            "bindingGroup": "Default",
+            "devices": [
+                {
+                    "devicePath": "<OculusTouchController>{LeftHand}",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<OculusTouchController>{RightHand}",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<OculusHMD>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
