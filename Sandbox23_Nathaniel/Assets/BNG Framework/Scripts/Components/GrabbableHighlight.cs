@@ -43,11 +43,11 @@ namespace BNG {
             }
         }
         public void HighlightItem() {
-            // Enable your highlight here
+
         }
 
         public void UnhighlightItem() {
-            // Disable your highlight here
+
         }
     }
 }
