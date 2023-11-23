@@ -196,6 +196,8 @@ GameObject:
   - component: {fileID: 425733706}
   - component: {fileID: 425733707}
   - component: {fileID: 425733708}
+  - component: {fileID: 425733709}
+  - component: {fileID: 425733710}
   m_Layer: 10
   m_Name: Grab and Scale
   m_TagString: Untagged
@@ -229,7 +231,7 @@ MonoBehaviour:
   BreakDistance: 0
   HideHandGraphics: 0
   ParentToHands: 0
-  ParentHandModel: 1
+  ParentHandModel: 0
   SnapHandModel: 1
   CanBeDropped: 1
   CanBeSnappedToSnapZone: 1
@@ -507,6 +509,211 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &425733709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425733699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9412316c9e916644083efa25e6c37707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabArray: []
+  minScale: 0.05
+  maxScale: 0.5
+  grabPosScript: {fileID: 0}
+  grabberPosManager: {fileID: 887129103}
+  leftGrabPos: {x: 0, y: 0, z: 0}
+  rightGrabPos: {x: 0, y: 0, z: 0}
+  scaleEnabled: 0
+--- !u!114 &425733710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425733699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad179a9e83dba5142adaaf7737678e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrab:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 425733709}
+        m_TargetAssemblyTypeName: GrabAndScale, Assembly-CSharp
+        m_MethodName: GrabTrue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onRelease:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 425733709}
+        m_TargetAssemblyTypeName: GrabAndScale, Assembly-CSharp
+        m_MethodName: GrabFalse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GrabScale
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 425733709}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: StopAllCoroutines
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GrabScale
+          m_BoolArgument: 0
+        m_CallState: 2
+  onBecomesClosestGrabbable:
+    m_PersistentCalls:
+      m_Calls: []
+  onNoLongerClosestGrabbable:
+    m_PersistentCalls:
+      m_Calls: []
+  onBecomesClosestRemoteGrabbable:
+    m_PersistentCalls:
+      m_Calls: []
+  onNoLongerClosestRemoteGrabbable:
+    m_PersistentCalls:
+      m_Calls: []
+  onGrip:
+    m_PersistentCalls:
+      m_Calls: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 425733709}
+        m_TargetAssemblyTypeName: GrabAndScale, Assembly-CSharp
+        m_MethodName: GetInitDistance
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 425733709}
+        m_TargetAssemblyTypeName: GrabAndScale, Assembly-CSharp
+        m_MethodName: StartStopGrabScale
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 425733709}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: StopAllCoroutines
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onButton1:
+    m_PersistentCalls:
+      m_Calls: []
+  onButton1Down:
+    m_PersistentCalls:
+      m_Calls: []
+  onButton1Up:
+    m_PersistentCalls:
+      m_Calls: []
+  onButton2:
+    m_PersistentCalls:
+      m_Calls: []
+  onButton2Down:
+    m_PersistentCalls:
+      m_Calls: []
+  onButton2Up:
+    m_PersistentCalls:
+      m_Calls: []
+  onSnapZoneEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onSnapZoneExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &887129103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 887129105}
+  - component: {fileID: 887129104}
+  m_Layer: 0
+  m_Name: GrabScaleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &887129104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887129103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6940f785107fc445bcad03445cc4269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabArray:
+  - {fileID: 1050897285}
+  - {fileID: 1050897284}
+--- !u!4 &887129105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887129103}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1050897283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -589,6 +796,18 @@ PrefabInstance:
       addedObject: {fileID: 2361718}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c174a6959921ebe47bd84d6dad03d92d, type: 3}
+--- !u!1 &1050897284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5570015029113384845, guid: c174a6959921ebe47bd84d6dad03d92d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1050897283}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1050897285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7821962434161193475, guid: c174a6959921ebe47bd84d6dad03d92d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1050897283}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1111783695
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeldItem: {fileID: 0}
   StartingItem: {fileID: 0}
-  CanDropItem: 0
+  CanDropItem: 1
   CanSwapItem: 1
   CanRemoveItem: 1
   ScaleItem: 1
@@ -1292,3 +1511,4 @@ SceneRoots:
   - {fileID: 1050897283}
   - {fileID: 1686372040}
   - {fileID: 425733705}
+  - {fileID: 887129105}
