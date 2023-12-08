@@ -214,7 +214,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.BeardedNinjaGames.VRInteractionFramework
+    Android: com.DefaultCompany.Sandbox23_Nathaniel
     Standalone: com.DefaultCompany.Sandbox23-Nathaniel
   buildNumber:
     Standalone: 0

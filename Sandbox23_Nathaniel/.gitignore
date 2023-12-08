@@ -70,3 +70,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Excluding big fat folder so I can pick and choose my assets without bulking up my branch
+/[Aa]ssets/[Ll]eartes[Ss]tudios/*
