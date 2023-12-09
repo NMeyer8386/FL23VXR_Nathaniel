@@ -8,4 +8,6 @@ This project is meant to be a proof of concept for fall safety training. It plac
 <br> Scripts can be found at > Sandbox23_Nathaniel/Assets/Scripts
 <br> Scenes can be found at > Sandbox23_Nathaniel/Assets/Scenes
 
+You can also check out both of those locations in the Coding branch for some things I made as tutorials for classmates
+
 Currently still in production :)
