@@ -12,7 +12,9 @@ public class GrabAndScale : MonoBehaviour
     public float minScale = 0.25f;
     public float maxScale = 1f;
 
-    //Private Variables 
+    public bool scaleEnabled = false;
+
+    //Private Variables
 
     [SerializeField]
     private GetGrabberPosition grabPosScript;
@@ -22,6 +24,7 @@ public class GrabAndScale : MonoBehaviour
 
     [SerializeField]
     private Vector3 leftGrabPos;
+
     [SerializeField]
     private Vector3 rightGrabPos;
 
@@ -29,30 +32,31 @@ public class GrabAndScale : MonoBehaviour
     private float currentDistance;
     private float scaleFactor;
 
-    public bool scaleEnabled = false;
     private bool grabbed { get; set; }
 
     //Get position of both grabbers
-    //slerp the distance between them
+    //lerp the distance between them
     //multiply the scale by the delta
 
     // Start is called before the first frame update
     void Start()
     {
+        //getting the grab interactables from the XR rig
         grabPosScript = grabberPosManager.GetComponent<GetGrabberPosition>();
         grabArray = grabPosScript.GetGrabbers();
 
     }
 
+    //This toggles the GrabScale coroutine (stopping the coroutine is done when the trigger is let go and when the object is let go)
     public void StartStopGrabScale()
     {
-        if (grabbed)
+        if (grabbed)                        //If the object is being grabbed...
+        {       
+            scaleEnabled = true;            //...Allow scaling,
+            StartCoroutine(GrabScale());    //And start the grab and scale coroutine.
+        } else                              //If the object isn't being grabbed...
         {
-            scaleEnabled = true;
-            StartCoroutine(GrabScale());
-        } else
-        {
-            scaleEnabled = false;
+            scaleEnabled = false;           //...Disallow scaling.
         }
     }
 
@@ -60,23 +64,23 @@ public class GrabAndScale : MonoBehaviour
     {
         while (scaleEnabled)
         {
-            leftGrabPos = grabArray[0].transform.position;
-            rightGrabPos = grabArray[1].transform.position;
+            leftGrabPos = grabArray[0].transform.position;  //Set the left grabber position
+            rightGrabPos = grabArray[1].transform.position; //Set the right grabber position
 
-            currentDistance = Vector3.Distance(leftGrabPos, rightGrabPos);
-            if (initialDistance != currentDistance)
+            currentDistance = Vector3.Distance(leftGrabPos, rightGrabPos);  //grab the current distance between the grabbers
+            if (initialDistance != currentDistance)                         //If the distances aren't the same...
             {
-                scaleFactor = Mathf.Lerp(initialDistance, currentDistance, 1);
-                //Definies a min/max for the scale factor 
-                scaleFactor = Mathf.Clamp(scaleFactor, minScale, maxScale);
+                scaleFactor = Mathf.Lerp(initialDistance, currentDistance, 1);  //...lerp the distance between the controllers,
+                scaleFactor = Mathf.Clamp(scaleFactor, minScale, maxScale);     //set a min/max value for the scale,
 
-                transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+                transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);  //and apply the value to the objects scale
 
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.01f); //if this is not here unity will crash :)
             }
         }
     }
 
+    //Used to grab the distance between the controllers once the trigger is pressed
     public void GetInitDistance()
     {
         initialDistance = Vector3.Distance(leftGrabPos, rightGrabPos);
