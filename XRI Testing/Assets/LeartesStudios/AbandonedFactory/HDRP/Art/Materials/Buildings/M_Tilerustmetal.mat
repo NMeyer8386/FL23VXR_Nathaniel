@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_Tilerustmetal
+  m_Shader: {fileID: -6465566751694194690, guid: 262bb03d801940b438a5757a469b2600,
+    type: 3}
+  m_Parent: {fileID: 2100000, guid: 83c1b6d0f337c5e4ea6e9cdfcf8a4ff7, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
+  - _NORMALMAP_TANGENT_SPACE
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - RayTracingPrepass
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 003145cc59e0b124d80bac8ddb7e98b6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseNormalMap:
+        m_Texture: {fileID: 2800000, guid: 5db16a9b784cb7449b5a7d18b4073174, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseORM:
+        m_Texture: {fileID: 2800000, guid: 93a74431a9e36914ba97b3a632c2d293, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Color_Tint_Mask:
+        m_Texture: {fileID: 2800000, guid: de483a2f8c33d15478acd1116553702e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Grunge01:
+        m_Texture: {fileID: 2800000, guid: e8b1f123347374e4d99e40c4aeeae9d1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Grunge02:
+        m_Texture: {fileID: 2800000, guid: e8b1f123347374e4d99e40c4aeeae9d1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GrungeTexture:
+        m_Texture: {fileID: 2800000, guid: 9f6f30cda803e3d459c8dd4e9016427d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SecondNormalMap:
+        m_Texture: {fileID: 2800000, guid: 8fedac27752597e458982e4ddfb4f675, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShaderMasks:
+        m_Texture: {fileID: 2800000, guid: 4fecb2cf9b2872f45939640741ac187e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _T_Normal:
+        m_Texture: {fileID: 2800000, guid: 8fedac27752597e458982e4ddfb4f675, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _NormalMapStrength: 1
+    - _QueueControl: 1
+    - _Use_AO_Dirt: 0
+    - _Use_Dirt: 1
+    m_Colors:
+    - _AO_Dirt_Color: {r: 0.09305898, g: 0.07036011, b: 0.056128494, a: 1}
+    - _AO_Dirt_Controls: {r: 1, g: 1, b: 1, a: 1}
+    - _Base_Color_Tint: {r: 1, g: 1, b: 1, a: 1}
+    - _BlendDirtORM: {r: 1, g: 0, b: 0, a: 0}
+    - _Bottom_Dirt_Color: {r: 0.33716366, g: 0.2874409, b: 0.16513224, a: 1}
+    - _Bottom_Dirt_Controls: {r: 0.5, g: 0.2, b: 1, a: 150}
+    - _Dirt_Color: {r: 0.0627451, g: 0.047058824, b: 0.03137255, a: 1}
+    - _Dirt_Controls: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+--- !u!114 &688271868709291712
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 0
+--- !u!114 &7506307758294432259
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 12
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 
+--- !u!114 &9056566017080854818
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
