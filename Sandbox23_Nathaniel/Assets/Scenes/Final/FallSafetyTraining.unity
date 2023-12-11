@@ -521,14 +521,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9412316c9e916644083efa25e6c37707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabArray: []
   minScale: 0.05
   maxScale: 0.5
-  grabPosScript: {fileID: 0}
-  grabberPosManager: {fileID: 887129103}
-  leftGrabPos: {x: 0, y: 0, z: 0}
-  rightGrabPos: {x: 0, y: 0, z: 0}
-  scaleEnabled: 0
+  grabScaleManager: {fileID: 887129103}
 --- !u!114 &425733710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,7 +541,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 425733709}
         m_TargetAssemblyTypeName: GrabAndScale, Assembly-CSharp
-        m_MethodName: GrabTrue
+        m_MethodName: GetInitDistance
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 425733709}
+        m_TargetAssemblyTypeName: GrabAndScale, Assembly-CSharp
+        m_MethodName: StartGrabScale
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -560,21 +567,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 425733709}
-        m_TargetAssemblyTypeName: GrabAndScale, Assembly-CSharp
-        m_MethodName: GrabFalse
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: GrabScale
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 425733709}
         m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-        m_MethodName: StopAllCoroutines
-        m_Mode: 1
+        m_MethodName: StopCoroutine
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -603,46 +598,10 @@ MonoBehaviour:
       m_Calls: []
   onTriggerDown:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 425733709}
-        m_TargetAssemblyTypeName: GrabAndScale, Assembly-CSharp
-        m_MethodName: GetInitDistance
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 425733709}
-        m_TargetAssemblyTypeName: GrabAndScale, Assembly-CSharp
-        m_MethodName: StartStopGrabScale
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onTriggerUp:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 425733709}
-        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-        m_MethodName: StopAllCoroutines
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onButton1:
     m_PersistentCalls:
       m_Calls: []
@@ -699,6 +658,8 @@ MonoBehaviour:
   grabArray:
   - {fileID: 1050897285}
   - {fileID: 1050897284}
+  leftGrab: 0
+  rightGrab: 0
 --- !u!4 &887129105
 Transform:
   m_ObjectHideFlags: 0
@@ -772,6 +733,156 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 887129104}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 887129104}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Grabbed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 887129104}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Released
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Grabbed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GetGrabberPosition, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GetGrabberPosition, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1050897285}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GetGrabberPosition, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1050897285}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1050897285}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171717348713376159, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3828630453731165911, guid: c174a6959921ebe47bd84d6dad03d92d,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -786,6 +897,126 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.058
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 887129104}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 887129104}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Grabbed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 887129104}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Released
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Grabbed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GetGrabberPosition, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GetGrabberPosition, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1050897284}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GetGrabberPosition, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1050897284}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1050897284}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onReleaseEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316059001988663148, guid: c174a6959921ebe47bd84d6dad03d92d,
+        type: 3}
+      propertyPath: onAfterGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
