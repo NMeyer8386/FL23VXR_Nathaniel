@@ -16,30 +16,16 @@ MonoBehaviour:
     keys:
     - 3e74e667ab53d3e4f8f05912f9888e10
     - 
+    - 3e717c5efb24aa349a1ed37e8978438b
     values:
     - goDatasByGlobalId:
         keys:
         - GlobalObjectId_V1-2-3e74e667ab53d3e4f8f05912f9888e10-887129103-0
-        - GlobalObjectId_V1-2-3e74e667ab53d3e4f8f05912f9888e10-5597197035984544564-1050897283
-        - GlobalObjectId_V1-2-3e74e667ab53d3e4f8f05912f9888e10-4313531085819916247-1050897283
-        - GlobalObjectId_V1-2-3e74e667ab53d3e4f8f05912f9888e10-5570015029113384845-1050897283
-        - GlobalObjectId_V1-2-3e74e667ab53d3e4f8f05912f9888e10-7821962434161193475-1050897283
-        - GlobalObjectId_V1-2-3e74e667ab53d3e4f8f05912f9888e10-7396465518801046407-4567875193536918534
         values:
         - iColor: 0
-          icon: 
-        - iColor: 9
-          icon: 
-        - iColor: 9
-          icon: 
-        - iColor: 2
-          icon: 
-        - iColor: 2
-          icon: 
-        - iColor: 8
           icon: 
       goDatasByInstanceId:
-        keys: 787d00000ef8ffff6ef9ffff807d0000827d0000a07d0000
+        keys: 787d00000ef8ffff6ef9ffff807d0000827d0000a07d0000c4e50100d82ff7ff3631f7ffcce50100cee50100f0e5010026f70100b041f6ff0e43f6ff2ef7010030f7010052f70100
         values:
         - iColor: 0
           icon: 
@@ -53,6 +39,36 @@ MonoBehaviour:
           icon: 
         - iColor: 8
           icon: 
+        - iColor: 0
+          icon: 
+        - iColor: 9
+          icon: 
+        - iColor: 9
+          icon: 
+        - iColor: 2
+          icon: 
+        - iColor: 2
+          icon: 
+        - iColor: 8
+          icon: 
+        - iColor: 0
+          icon: 
+        - iColor: 9
+          icon: 
+        - iColor: 9
+          icon: 
+        - iColor: 2
+          icon: 
+        - iColor: 2
+          icon: 
+        - iColor: 9
+          icon: 
+    - goDatasByGlobalId:
+        keys: []
+        values: []
+      goDatasByInstanceId:
+        keys: 
+        values: []
     - goDatasByGlobalId:
         keys: []
         values: []
