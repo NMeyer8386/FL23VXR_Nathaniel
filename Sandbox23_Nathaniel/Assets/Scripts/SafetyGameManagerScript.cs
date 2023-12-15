@@ -22,6 +22,7 @@ public class SafetyGameManagerScript : MonoBehaviour
     [EndTab]
     
     public UnityEvent winEvent;
+    public UnityEvent checklistUpdate;
 
     private int railsPlaced = 0;
     private bool ropeAnchorPlaced = false;
@@ -30,6 +31,7 @@ public class SafetyGameManagerScript : MonoBehaviour
     private void Start()
     {
         UpdateMenu();
+        checklistUpdate.Invoke();
     }
 
     public void SetCurrentGrabber(Grabber grabber)
@@ -57,6 +59,7 @@ public class SafetyGameManagerScript : MonoBehaviour
                 Debug.Log("Tag not recognized");
                 break;
         }
+        checklistUpdate.Invoke();
         UpdateMenu();
         if (railsPlaced == 6
             && ropeAnchorPlaced
