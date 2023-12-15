@@ -9,6 +9,12 @@ public class Snapzones : MonoBehaviour
     [SerializeField] GameObject SafetyGameManagerObj;
     SafetyGameManagerScript manager;
 
+    //Declaring rope/anchor materials because its the only thing that has multiple textures
+    //Plus it'd be inefficient to get the material from the object you're placing with another for loop
+    //plus this is easier :)
+    [SerializeField] Material ropeMaterial;
+    [SerializeField] Material anchorCarabinerMaterial;
+
     bool objPlaced = false;
 
 
@@ -21,9 +27,11 @@ public class Snapzones : MonoBehaviour
     //Pass the colliding gameobject and grabber to the script when there's a collision
     private void OnTriggerStay(Collider other)
     {
-        if (!objPlaced)
+
+        //if the object hasn't already been placed, and the collider isn't either of the grabbers...
+        if (!objPlaced && !(other.gameObject.CompareTag("RightGrab") || other.gameObject.CompareTag("LeftGrab")))
         {
-            SnapZoneCheck(other.gameObject, manager.currentGrabber);
+            SnapZoneCheck(other.gameObject, manager.currentGrabber);    //...Run the SnapZoneCheck function
         }
 
     }
@@ -32,25 +40,57 @@ public class Snapzones : MonoBehaviour
     //make sure the grip corresponds to the hand holding the object
     public void SnapZoneCheck(GameObject obj, Grabber grabber)
     {
-        Debug.Log(grabber.gameObject.tag);
         //If it's the right hand, the grip isn't being held, and objects need to be placed...
-        if (grabber.gameObject.CompareTag("RightGrab")  //Compare the tag of the grabber,
-            && InputBridge.Instance.RightGrip == 0      //Check if the grip is being pressed,
-            && gameObject.CompareTag(obj.tag))          //And make sure the object is the one you want to place,
+        if ((grabber.gameObject.CompareTag("RightGrab") && InputBridge.Instance.RightGrip == 0  //Compare the tag of the grabber and check if the grip has been released,
+            || grabber.gameObject.CompareTag("LeftGrab") && InputBridge.Instance.LeftGrip == 0) //Do the same for the left
+            && gameObject.CompareTag(obj.tag))  //And make sure the object is the one you want to place,
         {
-            Debug.Log("GG EZ");
-            Destroy(obj);
-            objPlaced = !objPlaced; //Then place it!
+            //Do the thing
+            PutInSnapZone(obj);
         }
+    }
 
-        //If it's the left hand, the grip isn't being held, and objects need to be placed...
-        if (grabber.gameObject.CompareTag("LeftGrab")
-            && InputBridge.Instance.LeftGrip == 0
-            && gameObject.CompareTag(obj.tag))
+    void PutInSnapZone(GameObject obj)
+    {
+        /* 
+         * For objects with multiple components that each have their own textures,
+         * we'll iterate through each material using a for loop and change them accordingly
+         */
+        if (obj.CompareTag("RopeAnchor"))
         {
-            Debug.Log("GG EZ");
+            var childRenderers = gameObject.GetComponentsInChildren<Renderer>();
+            foreach (Renderer childRenderer in childRenderers)
+            {
+                switch (childRenderer.gameObject.tag)
+                {
+                    case "Rope":
+                        childRenderer.material = ropeMaterial;
+                        break;
+
+                    case "AnchorCarabiner":
+                        childRenderer.material = anchorCarabinerMaterial;
+                        break;
+
+                    default:
+                        Debug.Log("She's biffed mate");
+                        break;
+                }
+            }
             Destroy(obj);
+            manager.GameOverCheck(obj.tag);
+            objPlaced = !objPlaced;
+        } 
+        /*
+         * For objects with just one material, we access the renderer and change it
+         */
+        else
+        {
+            var triggerMaterial = gameObject.GetComponent<Renderer>();
+            triggerMaterial.material = obj.gameObject.GetComponent<Renderer>().material;
+            Destroy(obj);
+            manager.GameOverCheck(obj.tag);
             objPlaced = !objPlaced;
         }
     }
+
 }
