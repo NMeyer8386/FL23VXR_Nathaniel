@@ -13,6 +13,9 @@ namespace BNG {
 
         protected Grabbable grab;
         protected Grabber thisGrabber;
+        protected Grabber secondGrabber;
+        protected bool firstGrab;
+        protected bool secondGrab;
 
         protected InputBridge input;
 
@@ -26,7 +29,7 @@ namespace BNG {
         /// </summary>
         /// <param name="grabber"></param>
         public virtual void OnGrab(Grabber grabber) {
-            thisGrabber = grabber;
+                thisGrabber = grabber;
         }
         
         /// <summary>

@@ -5,34 +5,45 @@ using UnityEngine;
 public class GrabAndScale : MonoBehaviour
 {
     //Public Variables
+    [Header("Minimum and Maximum Scale")]
+    [Range(0.001f, 0.9f)]
+    public float minScaleRatio = 0.25f;
+    [Range(0.001f, 5f)]
+    public float maxScaleRatio = 1f;
+    [Space]
+    [Header("Scale Threshold and Multiplier")]
+    [Range(0.001f, 0.5f)]
+    public float scaleThreshold = 0.05f;
+    [Range(0.01f, 5f)]
+    public float scaleMultiplier = 0.25f;
 
-    //Index 0 is left, index 1 is right
-    public GameObject[] grabArray;
-
-    public float minScale = 0.25f;
-    public float maxScale = 1f;
-
-    public bool scaleEnabled = false;
 
     //Private Variables
-
+    [Space]
     [SerializeField]
+    private GameObject grabScaleManager;
+
+    //Index 0 is left, index 1 is right
+    private GameObject[] grabArray;
     private GetGrabberPosition grabPosScript;
 
-    [SerializeField]
-    private GameObject grabberPosManager;
-
-    [SerializeField]
     private Vector3 leftGrabPos;
-
-    [SerializeField]
     private Vector3 rightGrabPos;
 
     private float initialDistance;
     private float currentDistance;
-    private float scaleFactor;
 
-    private bool grabbed { get; set; }
+    private Vector3 newScale;
+    Vector3 startScale;
+    public Vector3 maxScale;
+    public Vector3 minScale;
+
+    //Booleans for both of the grabbers
+    private bool leftGrabber { get; set; }
+    private bool rightGrabber { get; set; }
+
+    //Makes sure the while loop in the coroutine is always running
+    private bool grabbed = true;
 
     //Get position of both grabbers
     //lerp the distance between them
@@ -42,41 +53,78 @@ public class GrabAndScale : MonoBehaviour
     void Start()
     {
         //getting the grab interactables from the XR rig
-        grabPosScript = grabberPosManager.GetComponent<GetGrabberPosition>();
+        grabPosScript = grabScaleManager.GetComponent<GetGrabberPosition>();
         grabArray = grabPosScript.GetGrabbers();
 
+        startScale = gameObject.transform.localScale;
+        maxScale = gameObject.transform.localScale * maxScaleRatio;
+        minScale = gameObject.transform.localScale * minScaleRatio;
     }
 
-    //This toggles the GrabScale coroutine (stopping the coroutine is done when the trigger is let go and when the object is let go)
-    public void StartStopGrabScale()
+    //This starts the GrabScale coroutine (stopping the coroutine is done when the object is released)
+    public void StartGrabScale(GameObject thingToScale)
     {
-        if (grabbed)                        //If the object is being grabbed...
-        {       
-            scaleEnabled = true;            //...Allow scaling,
-            StartCoroutine(GrabScale());    //And start the grab and scale coroutine.
-        } else                              //If the object isn't being grabbed...
-        {
-            scaleEnabled = false;           //...Disallow scaling.
-        }
+        StartCoroutine(GrabScale(thingToScale));
     }
 
-    IEnumerator GrabScale()
+    //Scales the object based on how far apart the controllers are
+    IEnumerator GrabScale(GameObject obj)
     {
-        while (scaleEnabled)
+        //Runs as long as the object is being held
+        while (grabbed)
         {
-            leftGrabPos = grabArray[0].transform.position;  //Set the left grabber position
-            rightGrabPos = grabArray[1].transform.position; //Set the right grabber position
+            //Make sure both hands are grabbing the object
+            leftGrabber = grabPosScript.leftGrab;
+            rightGrabber = grabPosScript.rightGrab;
 
-            currentDistance = Vector3.Distance(leftGrabPos, rightGrabPos);  //grab the current distance between the grabbers
-            if (initialDistance != currentDistance)                         //If the distances aren't the same...
+            if (leftGrabber && rightGrabber)                    //If both hands are grabbing the object...
             {
-                scaleFactor = Mathf.Lerp(initialDistance, currentDistance, 1);  //...lerp the distance between the controllers,
-                scaleFactor = Mathf.Clamp(scaleFactor, minScale, maxScale);     //set a min/max value for the scale,
+                leftGrabPos = grabArray[0].transform.position;  //...Set the left grabber position,
+                rightGrabPos = grabArray[1].transform.position; //Set the right grabber position,
 
-                transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);  //and apply the value to the objects scale
+                currentDistance = Vector3.Distance(leftGrabPos, rightGrabPos);  //And grab the current distance between the grabbers
+                var scaleRatio = currentDistance / initialDistance;
+                if (scaleRatio > 1f) //If thing go big
+                {
+                    var amountOver1 = (scaleRatio - 1f);
+                    var multipliedAmountOver1 = amountOver1 * scaleMultiplier;
 
-                yield return new WaitForSeconds(0.01f); //if this is not here unity will crash :)
+                    var multAmntOverNoThresh = multipliedAmountOver1 - scaleThreshold;
+                    Debug.Log(multAmntOverNoThresh + "beeg");
+                    if (multAmntOverNoThresh > 0f) //If controllers are getting farther apart
+                    {
+                        var targetScaleRatio = 1f + multAmntOverNoThresh;
+                        var targetScale = targetScaleRatio * startScale;
+
+                        bool overMax = targetScale.x > maxScale.x || targetScale.y > maxScale.y || targetScale.z > maxScale.z;
+                        newScale = overMax ? maxScale : targetScale;
+
+                        //newScale = Mathf.Lerp(minScale, maxScale, 1 / (initialDistance/currentDistance) * 0.25f);  //...lerp the distance between the controllers,
+                        obj.transform.localScale = newScale;  //and apply the value to the objects scale
+                    }
+                }
+                else if (scaleRatio < 1f) //if thing go small
+                {
+                    var invertedScaleRatio = 1f / scaleRatio;
+                    var amountOver1 = invertedScaleRatio - 1f;
+                    var multipliedAmountOver1 = amountOver1 * scaleMultiplier;
+
+                    var multAmntOverNoThresh = multipliedAmountOver1 - scaleThreshold;
+                    Debug.Log(multAmntOverNoThresh + "SMOL");
+                    if (multAmntOverNoThresh > 0f)
+                    {
+                        var invertedTargetScaleRatio = 1f + multAmntOverNoThresh;
+                        var targetScale = 1f / invertedTargetScaleRatio * startScale;
+
+                        bool underMin = targetScale.x > maxScale.x || targetScale.y > maxScale.y || targetScale.z > maxScale.z;
+                        newScale = underMin ? minScale : targetScale;
+
+                        Debug.Log(newScale + " " + underMin);
+                        obj.transform.localScale = newScale;
+                    }
+                }
             }
+            yield return null; //if this is not here unity will crash :)
         }
     }
 
@@ -84,17 +132,5 @@ public class GrabAndScale : MonoBehaviour
     public void GetInitDistance()
     {
         initialDistance = Vector3.Distance(leftGrabPos, rightGrabPos);
-    }
-
-    /* I'd like to use something other than functions for this, but I can't find another way
-     * to change a custom boolean using unity events so this will have to do */
-    public void GrabTrue()
-    {
-        grabbed = true;
-    }
-
-    public void GrabFalse()
-    {
-        grabbed = false;
     }
 }

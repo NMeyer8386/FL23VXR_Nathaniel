@@ -71,5 +71,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Excluding big fat folder so I can pick and choose my assets without bulking up my branch
+# Excluding big fat folders so I can pick and choose my assets without bulking up my branch
 /[Aa]ssets/[Ll]eartes[Ss]tudios/*
+/[Aa]ssets/[Pp]olygon[Pp]rototype/*
