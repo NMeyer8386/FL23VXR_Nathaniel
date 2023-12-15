@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BNG;
+using UnityEngine.Events;
 
 public class Snapzones : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Snapzones : MonoBehaviour
     [SerializeField] Material anchorCarabinerMaterial;
 
     bool objPlaced = false;
+    float releaseAmount = 0.5f;
 
 
     //Set the manager script instance on start
@@ -40,9 +42,11 @@ public class Snapzones : MonoBehaviour
     //make sure the grip corresponds to the hand holding the object
     public void SnapZoneCheck(GameObject obj, Grabber grabber)
     {
+        var rightReleased = grabber.gameObject.CompareTag("RightGrab") && InputBridge.Instance.RightGrip < releaseAmount;
+        var leftReleased = grabber.gameObject.CompareTag("LeftGrab") && InputBridge.Instance.LeftGrip < releaseAmount;
+
         //If it's the right hand, the grip isn't being held, and objects need to be placed...
-        if ((grabber.gameObject.CompareTag("RightGrab") && InputBridge.Instance.RightGrip == 0  //Compare the tag of the grabber and check if the grip has been released,
-            || grabber.gameObject.CompareTag("LeftGrab") && InputBridge.Instance.LeftGrip == 0) //Do the same for the left
+        if ((rightReleased || leftReleased)     //Compare the tag of the grabber and check if the grip has been released,
             && gameObject.CompareTag(obj.tag))  //And make sure the object is the one you want to place,
         {
             //Do the thing
@@ -91,6 +95,10 @@ public class Snapzones : MonoBehaviour
             manager.GameOverCheck(obj.tag);
             objPlaced = !objPlaced;
         }
-    }
 
+        if (objPlaced)
+        {
+            gameObject.GetComponent<AudioSource>().Play();
+        }
+    }
 }

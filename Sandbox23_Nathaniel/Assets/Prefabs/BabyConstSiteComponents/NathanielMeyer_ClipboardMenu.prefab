@@ -279,7 +279,7 @@ MonoBehaviour:
   CanBeHeldDown: 1
   InitialHoldDownDelay: 0.5
   HoldDownDelay: 0.1
-  AnimateKey: 1
+  AnimateKey: 0
   PressedInZValue: 0.01
   PressInSpeed: 15
 --- !u!1 &1016213886797928403
@@ -1687,7 +1687,7 @@ MonoBehaviour:
   CanBeHeldDown: 1
   InitialHoldDownDelay: 0.5
   HoldDownDelay: 0.1
-  AnimateKey: 1
+  AnimateKey: 0
   PressedInZValue: 0.01
   PressInSpeed: 15
 --- !u!1 &7575875057320614372
