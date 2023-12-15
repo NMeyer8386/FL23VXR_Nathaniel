@@ -4,6 +4,7 @@ using UnityEngine;
 using BNG;
 using TMPro;
 using VInspector;
+using UnityEngine.Events;
 
 public class SafetyGameManagerScript : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class SafetyGameManagerScript : MonoBehaviour
     //See tooltip for index correlation
     [Tooltip("Index 0: Rails, Index 1: Hole Cover, Index 2: Rope and Anchor")]
     [SerializeField] TMP_Text[] menuLabels;
+    [EndTab]
+    
+    public UnityEvent winEvent;
 
     private int railsPlaced = 0;
     private bool ropeAnchorPlaced = false;
@@ -54,26 +58,32 @@ public class SafetyGameManagerScript : MonoBehaviour
                 break;
         }
         UpdateMenu();
+        if (railsPlaced == 6
+            && ropeAnchorPlaced
+            && holeCoverPlaced)
+        {
+            winEvent.Invoke();
+        }
     }
 
     void UpdateMenu()
     {
-        //TODO: Rail placement counter
+        menuLabels[0].text = railsPlaced + "/6";
         
         if (holeCoverPlaced)
         {
             menuLabels[1].text = "1/1";
         } else
         {
-            menuLabels[1].text = "gaming";
+            menuLabels[1].text = "0/1";
         }
         
         if (ropeAnchorPlaced)
         {
-            menuLabels[2].text = "0/1";
+            menuLabels[2].text = "1/1";
         } else
         {
-            menuLabels[2].text = "penis";
+            menuLabels[2].text = "0/1";
         }
 
     }

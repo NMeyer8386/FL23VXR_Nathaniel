@@ -83,7 +83,7 @@ public class Snapzones : MonoBehaviour
         /*
          * For objects with just one material, we access the renderer and change it
          */
-        else
+        else if (obj.CompareTag("Rail") || obj.CompareTag("HoleCover"))
         {
             var triggerMaterial = gameObject.GetComponent<Renderer>();
             triggerMaterial.material = obj.gameObject.GetComponent<Renderer>().material;

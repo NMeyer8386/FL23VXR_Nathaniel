@@ -8,6 +8,11 @@ public class MenuSwitch : MonoBehaviour
     [SerializeField] GameObject placementMenu;
     [SerializeField] GameObject instructionsMenu;
 
+    private void Start()
+    {
+        SwitchToInstructions();
+    }
+
     [Button]
     public void SwitchToPlacement()
     {
